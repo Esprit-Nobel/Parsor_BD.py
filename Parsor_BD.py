@@ -7,7 +7,7 @@ Deleting the lines of the treated file which are present in the files of
 reference, writing of the duplicate entries in a file and doing some statistical
 calculus on the seventh column.
 
-IN  : >=2 file_to_filtrate first_ref  second_ref
+IN  : >=2 file_to_filtrate first_ref second_ref
 OUT : 3 filtered_file, file with the duplicate entries and
 statistics of the seventh column
 
@@ -76,7 +76,7 @@ for elt in ARGUMENTS.ref_files: #list of reference files
             if not CONTENT_R[i].startswith("#"):
                 DEC = CONTENT_R[i].split("\t", 2)
                 HEAD = DEC[0] + DEC[1]
-                CONTENT_TMP.append(HEAD) #list of lines with only the concatenation 
+                CONTENT_TMP.append(HEAD) #list of lines with only the concatenation
                                          #of the 2 first columns
             i += 1
         print ("reading reference_file : ", elt, file=sys.stdout)
@@ -105,12 +105,12 @@ SET_DUPLICATE_ENTRIES = set(LIST_DUPLICATE_ENTRIES) #transform in set
 #
 LIST_COL7 = [] #data of the seventh column
 #
-with open("Final_filtered_file.txt", "w") as res: #creation of the final file 
+with open("Final_filtered_file.txt", "w") as res: #creation of the final file
                                              #without the duplicate entries
     #
     for NUMBER, LINE in enumerate(CONTENT_I): #for each line of the initial file
         #
-        if NUMBER in SET_CONSERVED: 
+        if NUMBER in SET_CONSERVED:
             res.write(LINE) #write unique lines
             if not LINE.startswith("#"):
                 DEC = LINE.split("\t", 7)
@@ -129,7 +129,7 @@ with open("Duplicate_entries.txt", "w") as dou: #creation of the file of
 #
 print ("creation of : Duplicate_entries.txt", file=sys.stdout)
 logging.debug("creation of : Duplicate_entries.txt")
-#           
+#
 del NUMBER, LINE, DEC, DIC_I, i, SET_DUPLICATE_ENTRIES, SET_CONSERVED
 del DIC_SIZE_INITIAL, LIST_CONSERVED, LIST_DUPLICATE_ENTRIES
 #end file creation
